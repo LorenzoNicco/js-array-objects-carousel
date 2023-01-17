@@ -80,12 +80,7 @@ const forwardButton = document.querySelector('.forward');
 
 forwardButton.addEventListener('click', 
     function () {
-        if (appearSlide < slidesGroup.length - 1) {
-            buttonBehaviour(appearSlide + 1);
-        }
-        else {
-            buttonBehaviour(0);
-        }
+        buttonBehaviourForward (appearSlide + 1, 0);
     }
 );
 
@@ -94,25 +89,61 @@ const backButton = document.querySelector('.back');
 
 backButton.addEventListener('click', 
     function () {
-        if (appearSlide > 0) {
-            buttonBehaviour(appearSlide - 1);
-        }
-        else if (appearSlide == 0) {
-            buttonBehaviour(slidesGroup.length - 1);
-        }
+        buttonBehaviourBackward(appearSlide - 1, slidesGroup.length - 1);
     }
+    
 );
 
+// Autoplay
+const autoPlay = setInterval(buttonBehaviourForward, 3000, appearSlide + 1, 0);
 
 // Funzioni----------------------------------------------------------------
-function buttonBehaviour (valore) {
-    slidesGroup[appearSlide].classList.remove('appear');
-    darkDiv[appearSlide].classList.remove('disappear');
-    borderPic[appearSlide].classList.remove('border-select');
+function buttonBehaviourForward (valore1, valore2) {
+    if (appearSlide < slidesGroup.length - 1) {
+        slidesGroup[appearSlide].classList.remove('appear');
+        darkDiv[appearSlide].classList.remove('disappear');
+        borderPic[appearSlide].classList.remove('border-select');
+    
+        appearSlide = valore1;
+    
+        slidesGroup[appearSlide].classList.add('appear');
+        darkDiv[appearSlide].classList.add('disappear');
+        borderPic[appearSlide].classList.add('border-select');
+    }
+    else {
+        slidesGroup[appearSlide].classList.remove('appear');
+        darkDiv[appearSlide].classList.remove('disappear');
+        borderPic[appearSlide].classList.remove('border-select');
+    
+        appearSlide = valore2;
+    
+        slidesGroup[appearSlide].classList.add('appear');
+        darkDiv[appearSlide].classList.add('disappear');
+        borderPic[appearSlide].classList.add('border-select');
+    }
+}
 
-    appearSlide = valore;
-
-    slidesGroup[appearSlide].classList.add('appear');
-    darkDiv[appearSlide].classList.add('disappear');
-    borderPic[appearSlide].classList.add('border-select');
+function buttonBehaviourBackward (valore1, valore2) {
+    if (appearSlide > 0) {
+        slidesGroup[appearSlide].classList.remove('appear');
+        darkDiv[appearSlide].classList.remove('disappear');
+        borderPic[appearSlide].classList.remove('border-select');
+    
+        appearSlide = valore1;
+    
+        slidesGroup[appearSlide].classList.add('appear');
+        darkDiv[appearSlide].classList.add('disappear');
+        borderPic[appearSlide].classList.add('border-select');
+    }
+    else if (appearSlide == 0) {
+        slidesGroup[appearSlide].classList.remove('appear');
+        darkDiv[appearSlide].classList.remove('disappear');
+        borderPic[appearSlide].classList.remove('border-select');
+    
+        appearSlide = valore2;
+    
+        slidesGroup[appearSlide].classList.add('appear');
+        darkDiv[appearSlide].classList.add('disappear');
+        borderPic[appearSlide].classList.add('border-select');
+    }
 }
