@@ -75,12 +75,15 @@ darkDiv[appearSlide].classList.add('disappear');
 let borderPic = document.querySelectorAll('.side-pic');
 borderPic[appearSlide].classList.add('.border-select');
 
+// Autoplay
+const autoPlay = setInterval(buttonBehaviourForward, 3000);
+
 // Pulsante avanti
 const forwardButton = document.querySelector('.forward');
 
 forwardButton.addEventListener('click', 
     function () {
-        buttonBehaviourForward (appearSlide + 1, 0);
+        buttonBehaviourForward ();
     }
 );
 
@@ -89,22 +92,20 @@ const backButton = document.querySelector('.back');
 
 backButton.addEventListener('click', 
     function () {
-        buttonBehaviourBackward(appearSlide - 1, slidesGroup.length - 1);
+        buttonBehaviourBackward();
     }
     
 );
 
-// Autoplay
-const autoPlay = setInterval(buttonBehaviourForward, 3000, appearSlide + 1, 0);
 
 // Funzioni----------------------------------------------------------------
-function buttonBehaviourForward (valore1, valore2) {
+function buttonBehaviourForward () {
     if (appearSlide < slidesGroup.length - 1) {
         slidesGroup[appearSlide].classList.remove('appear');
         darkDiv[appearSlide].classList.remove('disappear');
         borderPic[appearSlide].classList.remove('border-select');
     
-        appearSlide = valore1;
+        appearSlide = appearSlide + 1;
     
         slidesGroup[appearSlide].classList.add('appear');
         darkDiv[appearSlide].classList.add('disappear');
@@ -115,7 +116,7 @@ function buttonBehaviourForward (valore1, valore2) {
         darkDiv[appearSlide].classList.remove('disappear');
         borderPic[appearSlide].classList.remove('border-select');
     
-        appearSlide = valore2;
+        appearSlide = 0;
     
         slidesGroup[appearSlide].classList.add('appear');
         darkDiv[appearSlide].classList.add('disappear');
@@ -123,13 +124,13 @@ function buttonBehaviourForward (valore1, valore2) {
     }
 }
 
-function buttonBehaviourBackward (valore1, valore2) {
+function buttonBehaviourBackward () {
     if (appearSlide > 0) {
         slidesGroup[appearSlide].classList.remove('appear');
         darkDiv[appearSlide].classList.remove('disappear');
         borderPic[appearSlide].classList.remove('border-select');
     
-        appearSlide = valore1;
+        appearSlide = appearSlide - 1;
     
         slidesGroup[appearSlide].classList.add('appear');
         darkDiv[appearSlide].classList.add('disappear');
@@ -140,7 +141,7 @@ function buttonBehaviourBackward (valore1, valore2) {
         darkDiv[appearSlide].classList.remove('disappear');
         borderPic[appearSlide].classList.remove('border-select');
     
-        appearSlide = valore2;
+        appearSlide = slidesGroup.length - 1;
     
         slidesGroup[appearSlide].classList.add('appear');
         darkDiv[appearSlide].classList.add('disappear');
