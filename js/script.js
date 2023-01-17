@@ -41,20 +41,18 @@ const images = [
 // Aquisizione elemento base
 const subCarousel = document.getElementById("sub-carousel");
 
-const pics = ["img/01.webp",
-              "img/02.webp",
-              "img/03.webp",
-              "img/04.webp",
-              "img/05.webp"]
-;
-console.log(pics);
-
 // Creazione dinamica delle slides
 let appearSlide = 0;
 
-for (let i = 0; i < pics.length; i++) {
+for (let i = 0; i < images.length; i++) {
     subCarousel.innerHTML += `<div class="slides">
-                                <img src="${pics[i]}">
+                                <img src="${images[i].image}">
+
+                                <div class="label">
+                                    <h2>${images[i].title}</h2>
+
+                                    <p>${images[i].text}</p>
+                                </div>
                             </div>`;
 }
 
