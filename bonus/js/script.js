@@ -59,6 +59,22 @@ for (let i = 0; i < images.length; i++) {
 let slidesGroup = document.querySelectorAll('.slides');
 slidesGroup[appearSlide].classList.add('appear');
 
+// Aggiunta miniature di lato
+const sideDiv = document.querySelector(".side");
+
+for (let i = 0; i < images.length; i++) {
+    sideDiv.innerHTML += `<div class="side-slide">
+                            <div class="dark-div"></div>
+                            <img src="../${images[i].image}" class="side-pic">
+                         </div>`;
+}
+
+let darkDiv = document.querySelectorAll('.dark-div');
+darkDiv[appearSlide].classList.add('disappear');
+
+let borderPic = document.querySelectorAll('.side-pic');
+borderPic[appearSlide].classList.add('.border-select');
+
 // Pulsante avanti
 const forwardButton = document.querySelector('.forward');
 
@@ -91,6 +107,12 @@ backButton.addEventListener('click',
 // Funzioni----------------------------------------------------------------
 function buttonBehaviour (valore) {
     slidesGroup[appearSlide].classList.remove('appear');
+    darkDiv[appearSlide].classList.remove('disappear');
+    borderPic[appearSlide].classList.remove('border-select');
+
     appearSlide = valore;
+
     slidesGroup[appearSlide].classList.add('appear');
+    darkDiv[appearSlide].classList.add('disappear');
+    borderPic[appearSlide].classList.add('border-select');
 }

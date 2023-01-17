@@ -23,13 +23,13 @@ main {
 }
 
 .carousel > div {
-    position: realtive;
+    display: flex;
     width: 100%;
     height: 100%;
 }
 
 .slides {
-    width: 100%;
+    width: 80%;
     height: 100%;
     display: none;
 }
@@ -48,28 +48,56 @@ img {
     object-fit: cover;
 }
 
+.side {
+    position: relative;
+    height: 100%;
+    width: 20%;
+}
+
+.side-slide {
+    width: 100%;
+    height: 20%;
+    position: relative;
+}
+
+.dark-div {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
 .buttons {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 15;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
 button {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.7);
-    line-height: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    line-height: 30px;
 }
 
 .disappear {
     display: none;
 }
+
+.border-select {
+    border: 10px solid rgb(216, 127, 54);
+}
+
 
 .appear {
     display: block;
