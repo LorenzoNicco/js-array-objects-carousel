@@ -76,7 +76,42 @@ let borderPic = document.querySelectorAll('.side-pic');
 borderPic[appearSlide].classList.add('.border-select');
 
 // Autoplay
-const autoPlay = setInterval(buttonBehaviourForward, 3000);
+const startButton = document.querySelector('.start');
+const invertButton = document.querySelector('.invert');
+
+let flag = false;
+let autoPlay;
+
+startButton.addEventListener('click', 
+    function () {
+        if (flag == false) {
+            autoPlay = setInterval(buttonBehaviourForward, 3000);
+
+            flag = true;
+        }
+        else {
+            clearInterval(autoPlay);
+
+            flag = false;
+        }
+    }
+);
+
+invertButton.addEventListener('click', 
+    function () {
+        if (flag == false) {
+            autoPlay = setInterval(buttonBehaviourBackward, 3000);
+
+            flag = true;
+        }
+        else {
+            clearInterval(autoPlay);
+
+            flag = false;
+        }
+    }
+);
+
 
 // Pulsante avanti
 const forwardButton = document.querySelector('.forward');

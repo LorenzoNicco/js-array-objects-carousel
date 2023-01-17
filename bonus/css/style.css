@@ -89,6 +89,22 @@ button {
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.5);
     line-height: 30px;
+    cursor: pointer;
+}
+
+.player {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button.start,
+button.invert {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: lightsteelblue;
 }
 
 .disappear {
