@@ -64,10 +64,12 @@ const forwardButton = document.querySelector('.forward');
 
 forwardButton.addEventListener('click', 
     function () {
-        console.log('Cliccato avanti');
-        slidesGroup[appearSlide].classList.remove('appear');
-        appearSlide = appearSlide + 1;
-        slidesGroup[appearSlide].classList.add('appear');
+        if (appearSlide < slidesGroup.length - 1) {
+            buttonBehaviour(appearSlide + 1);
+        }
+        else {
+            buttonBehaviour(0);
+        }
     }
 );
 
@@ -76,9 +78,19 @@ const backButton = document.querySelector('.back');
 
 backButton.addEventListener('click', 
     function () {
-        console.log('Cliccato avanti');
-        slidesGroup[appearSlide].classList.remove('appear');
-        appearSlide = appearSlide - 1;
-        slidesGroup[appearSlide].classList.add('appear');
+        if (appearSlide > 0) {
+            buttonBehaviour(appearSlide - 1);
+        }
+        else if (appearSlide == 0) {
+            buttonBehaviour(slidesGroup.length - 1);
+        }
     }
 );
+
+
+// Funzioni----------------------------------------------------------------
+function buttonBehaviour (valore) {
+    slidesGroup[appearSlide].classList.remove('appear');
+    appearSlide = valore;
+    slidesGroup[appearSlide].classList.add('appear');
+}
