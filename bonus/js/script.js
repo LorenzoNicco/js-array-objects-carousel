@@ -75,6 +75,26 @@ darkDiv[appearSlide].classList.add('disappear');
 let borderPic = document.querySelectorAll('.side-pic');
 borderPic[appearSlide].classList.add('.border-select');
 
+// Selezione diretta dalle thumbnails
+const allThumbnails = document.querySelectorAll(".side-slide");
+console.log("allThumbnails", allThumbnails, typeof allThumbnails);
+
+allThumbnails.forEach((singleThumbnail, index) => {
+    singleThumbnail.addEventListener('click', 
+        () => {
+            slidesGroup[appearSlide].classList.remove('appear');
+            darkDiv[appearSlide].classList.remove('disappear');
+            borderPic[appearSlide].classList.remove('border-select');
+        
+            appearSlide = index;
+        
+            slidesGroup[appearSlide].classList.add('appear');
+            darkDiv[appearSlide].classList.add('disappear');
+            borderPic[appearSlide].classList.add('border-select');
+        }
+    );
+});
+
 // Autoplay
 const startButton = document.querySelector('.start');
 const invertButton = document.querySelector('.invert');
